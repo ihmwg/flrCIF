@@ -1,3 +1,38 @@
+# -------------------------------------------------------------------------------------------------------------------------
+#
+#  File: flr-extension.dic
+#  Date:25-MAY-2018
+#
+#  Dictionary extension for Fluorescence/FRET-based structural models.
+#
+# -------------------------------------------------------------------------------------------------------------------------
+
+data_flr-extension.dic
+
+    _datablock.id                          flr-extension.dic
+    _datablock.description
+;
+     This data block holds the extension dictionary for Fluorescence / FRET-based structural models.
+     This extension is based on the PDBx/mmCIF dictionary and the IHM-dictionary.
+     This resource is actively developed and maintained in a github repository available at
+     https://github.com/ihmwg/FLR-dictionary.
+;
+
+    _dictionary.title           flr-extension.dic
+    _dictionary.datablock_id    flr-extension.dic
+    _dictionary.version         0.000
+#
+     loop_
+    _dictionary_history.version
+    _dictionary_history.update
+    _dictionary_history.revision
+
+  0.000   2018-05-25
+;
+  Changes (bv/cah/tp/md/cams/jdw)
+  + Release as initial version 0.000
+;
+
 ####################
 ## FLR_INSTRUMENT ##
 ####################
@@ -368,7 +403,6 @@ save_flr_sample
     Example 1 -
 ;
 ;
-    loop_
 
     #...abbreviated...
 ;
@@ -483,15 +517,6 @@ save_flr_probe_list
     Example 1 -
 ;
 ;
-        loop_
-        _flr_probe_list.probe_id
-        _flr_probe_list.chromophore_name
-        _flr_probe_list.reactive_probe_flag
-        _flr_probe_list.reactive_probe_name
-        _flr_probe_list.probe_origin
-        _flr_probe_list.probe_link_type
-        1  "Alexa 488"  "yes"  "Alexa488 TFP ester"    extrinsic  covalent
-        2  "Alexa 647"  "yes"  "Alexa488 C5 TFP ester" extrinsic  covalent
         # ... abbreviated ...
 ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -909,16 +934,6 @@ save_flr_poly_probe_position
     Example 1 -
 ;
 ;
-        loop_
-        _flr_poly_probe_position.id
-        _flr_poly_probe_position.entity_id
-        _flr_poly_probe_position.seq_id
-        _flr_poly_probe_position.comp_id
-        _flr_poly_probe_position.mutation_flag
-        _flr_poly_probe_position.modification_flag
-        1   1   1   1  40  CYS  "no"   "no"
-        2   2   1   1  40  CYS  "no"   "no"
-        3   3   2   2  20  DU   "no"   "yes"
         # ... abbreviated ...
 ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1519,11 +1534,12 @@ save__flr_fret_calibration_parameters.gG_gR_ratio
 save__flr_fret_calibration_parameters.beta
     _item_description.description
 ;     Normalization of excitation intensities and cross-sections of
-      sigma values of donor and acceptor.
+      sigma values of donor and acceptor. This is relevant for
+      Pulse Interleaved Excitation (PIE) experiments. 
 ;
     _item.name                  '_flr_fret_calibration_parameters.beta'
     _item.category_id             flr_fret_calibration_parameters
-    _item.mandatory_code          yes
+    _item.mandatory_code          no
     _item_type.code               float
      save_
 
@@ -1544,6 +1560,18 @@ save__flr_fret_calibration_parameters.delta
       (lower wavelength).
 ;
     _item.name                  '_flr_fret_calibration_parameters.delta'
+    _item.category_id             flr_fret_calibration_parameters
+    _item.mandatory_code          yes
+    _item_type.code               float
+     save_
+
+save__flr_fret_calibration_parameters.a_b
+    _item_description.description
+;     a_b is the fraction of molecules in the bright state and is used
+      in the computation of the gamma value in
+      _flr_fret_calibration_parameters.gamma. 
+;
+    _item.name                  '_flr_fret_calibration_parameters.a_b'
     _item.category_id             flr_fret_calibration_parameters
     _item.mandatory_code          yes
     _item_type.code               float
@@ -2148,21 +2176,6 @@ save__flr_FPS_global_parameter.conversion_function_polynom_order
     _item_type.code               int
      save_
 
-save__flr_FPS_global_parameter.optimized_distance
-    _item_description.description
-;     The optimized distance setting.
-;
-    _item.name                  '_flr_FPS_global_parameter.optimized_distance'
-    _item.category_id             flr_FPS_global_parameter
-    _item.mandatory_code          no
-    _item_type.code               line
-    loop_
-    _item_enumeration.value
-    'All'
-    'Selected'
-    'Selected followed by All'
-     save_
-
 save__flr_FPS_global_parameter.repetition
     _item_description.description
 ;    Number of runs.
@@ -2297,7 +2310,7 @@ save__flr_FPS_global_parameter.sim_reciprocal_kT
 
 save__flr_FPS_global_parameter.sim_clash_potential
     _item_description.description
-;    The potential used for the penalty of an overlap ["^2"].
+;    The potential used for the penalty of an overlap.
 ;
     _item.name                  '_flr_FPS_global_parameter.sim_clash_potential'
     _item.category_id             flr_FPS_global_parameter
@@ -2307,7 +2320,7 @@ save__flr_FPS_global_parameter.sim_clash_potential
 
 save__flr_FPS_global_parameter.convergence_E
     _item_description.description
-;    Energy.
+;    Energy (in units internal to FPS).
 ;
     _item.name                  '_flr_FPS_global_parameter.convergence_E'
     _item.category_id             flr_FPS_global_parameter
@@ -2327,7 +2340,8 @@ save__flr_FPS_global_parameter.convergence_K
 
 save__flr_FPS_global_parameter.convergence_F
     _item_description.description
-;    Total force (derived from violated constraints) acting on a subunit.
+;    Total force (derived from violated constraints) acting on a subunit
+     (in units internal to FPS).
 ;
     _item.name                  '_flr_FPS_global_parameter.convergence_F'
     _item.category_id             flr_FPS_global_parameter
@@ -2337,7 +2351,7 @@ save__flr_FPS_global_parameter.convergence_F
 
 save__flr_FPS_global_parameter.convergence_T
     _item_description.description
-;    Total torque vector.
+;    Total torque vector (in units internal to FPS).
 ;
     _item.name                  '_flr_FPS_global_parameter.convergence_T'
     _item.category_id             flr_FPS_global_parameter
@@ -2555,16 +2569,6 @@ save_flr_FPS_AV_parameter
     Example 1 -
 ;
 ;
-        loop_
-        _flr_FPS_AV_parameter.id
-        _flr_FPS_AV_parameter.num_linker_atoms
-        _flr_FPS_AV_parameter.linker_length
-        _flr_FPS_AV_parameter.linker_width
-        _flr_FPS_AV_parameter.probe_radius_1
-        _flr_FPS_AV_parameter.probe_radius_2
-        _flr_FPS_AV_parameter.probe_radius_3
-        1 12 20.5 4.5  5.0 4.5 1.5
-        2 14 21.0 4.5 11.0 4.7 1.5
         # ... abbreviated ...
 ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
