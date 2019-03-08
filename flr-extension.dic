@@ -1,7 +1,7 @@
 # -------------------------------------------------------------------------------------------------------------------------
 #
 #  File: flr-extension.dic
-#  Date:25-MAY-2018
+#  Date:8-MARCH-2019
 #
 #  Dictionary extension for Fluorescence/FRET-based structural models.
 #
@@ -20,7 +20,7 @@ data_flr-extension.dic
 
     _dictionary.title           flr-extension.dic
     _dictionary.datablock_id    flr-extension.dic
-    _dictionary.version         0.000
+    _dictionary.version         0.001
 #
      loop_
     _dictionary_history.version
@@ -31,6 +31,11 @@ data_flr-extension.dic
 ;
   Changes (bv/cah/tp/md/cams/jdw)
   + Release as initial version 0.000
+;
+  0.001   2019-03-08
+;
+  Changes (bv)
+  + Updated flags to be case insensitive
 ;
 
 ####################
@@ -551,7 +556,7 @@ save__flr_probe_list.reactive_probe_flag
     _item.name                  '_flr_probe_list.reactive_probe_flag'
     _item.category_id             flr_probe_list
     _item.mandatory_code          yes
-    _item_type.code               code
+    _item_type.code               ucode
     loop_
     _item_enumeration.value
     "yes"
@@ -1020,7 +1025,7 @@ save__flr_poly_probe_position.mutation_flag
     _item.name                  '_flr_poly_probe_position.mutation_flag'
     _item.category_id             flr_poly_probe_position
     _item.mandatory_code          yes
-    _item_type.code               code
+    _item_type.code               ucode
     loop_
     _item_enumeration.value
     "yes"
@@ -1034,7 +1039,7 @@ save__flr_poly_probe_position.modification_flag
     _item.name                  '_flr_poly_probe_position.modification_flag'
     _item.category_id             flr_poly_probe_position
     _item.mandatory_code          yes
-    _item_type.code               code
+    _item_type.code               ucode
     loop_
     _item_enumeration.value
     "yes"
@@ -1267,7 +1272,7 @@ save__flr_poly_probe_conjugate.ambiguous_stoichiometry_flag
     _item.name                  '_flr_poly_probe_conjugate.ambiguous_stoichiometry_flag'
     _item.category_id             flr_poly_probe_conjugate
     _item.mandatory_code          yes
-    _item_type.code               code
+    _item_type.code               ucode
     loop_
     _item_enumeration.value
     "yes"
