@@ -45,7 +45,7 @@ data_flr-extension.dic
   0.003   2019-05-22
 ;
   Changes (bv)
-  + Deleted FLR_CHEMICAL_DESCRIPTOR and modified all children to point to IHM_CHEMICAL_DESCRIPTOR
+  + Deleted FLR_CHEMICAL_DESCRIPTOR and modified all children to point to IHM_CHEMICAL_COMPONENT_DESCRIPTOR
 ;
 
 ####################
@@ -772,7 +772,7 @@ save__flr_probe_descriptor.reactive_probe_chem_descriptor_id
     _item.mandatory_code          no
     _item_type.code               int
     _item_linked.child_name     '_flr_probe_descriptor.reactive_probe_chem_descriptor_id'
-    _item_linked.parent_name    '_ihm_chemical_descriptor.id'
+    _item_linked.parent_name    '_ihm_chemical_component_descriptor.id'
      save_
 
 save__flr_probe_descriptor.chromophore_center_atom
@@ -797,7 +797,7 @@ save__flr_probe_descriptor.chromophore_chem_descriptor_id
     _item.mandatory_code          no
     _item_type.code               int
     _item_linked.child_name     '_flr_probe_descriptor.chromophore_chem_descriptor_id'
-    _item_linked.parent_name    '_ihm_chemical_descriptor.id'
+    _item_linked.parent_name    '_ihm_chemical_component_descriptor.id'
      save_
 
 #############################
@@ -1070,7 +1070,7 @@ save__flr_poly_probe_position_modified.chem_descriptor_id
     _item.mandatory_code          yes
     _item_type.code               int
     _item_linked.child_name     '_flr_poly_probe_position_modified.chem_descriptor_id'
-    _item_linked.parent_name    '_ihm_chemical_descriptor.id'
+    _item_linked.parent_name    '_ihm_chemical_component_descriptor.id'
      save_
 
 save__flr_poly_probe_position_modified.atom_id
@@ -1147,7 +1147,7 @@ save__flr_poly_probe_conjugate.chem_descriptor_id
     _item.mandatory_code          yes
     _item_type.code               int
     _item_linked.child_name     '_flr_poly_probe_conjugate.chem_descriptor_id'
-    _item_linked.parent_name    '_ihm_chemical_descriptor.id'
+    _item_linked.parent_name    '_ihm_chemical_component_descriptor.id'
      save_
 
 save__flr_poly_probe_conjugate.ambiguous_stoichiometry_flag
