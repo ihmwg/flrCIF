@@ -1,0 +1,591 @@
+# ----------------------------------------------------------------------------------------------------------------------------
+#  File: fluoresence-extension.dic
+#  Date:20-APR-2018 CS/BV/JW
+#
+#  Draft dictionary extension for Fluorescence repository  
+#
+# ----------------------------------------------------------------------------------------------------------------------------
+
+####################
+## FLR_EXPERIMENT ##
+####################
+
+save_flr_experiment
+    _category.description
+;              Data items in the FLR_EXPERIMENT category records the
+               details of the Fluorescence experiment. 
+;
+    _category.id                  flr_experiment
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_experiment.id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+        loop_
+         _flr_experiment.id
+         _flr_experiment.averaging_mode
+         _flr_experiment.experiment_type
+         _flr_experiment.temp_condition_id
+         1 single-molecule 'confocal with point detector' 1
+        # ... abbreviated ...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   _pdbx_category_context.type         CONTRIBUTED
+   _pdbx_category_context.category_id  flr_experiment
+     save_
+
+save__flr_experiment.id
+    _item_description.description
+;     A unique identifier for the experimental setup.
+;
+    _item.name                  '_flr_experiment.id'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_experiment.entry_id
+    _item_description.description
+;     This data item is a pointer to _entry.id in the ENTRY category.
+;
+    _item.name                  '_flr_experiment.entry_id'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               code
+    _item_linked.child_name     '_flr_experiment.entry_id'
+    _item_linked.parent_name    '_entry.id'
+     save_
+
+save__flr_experiment.averaging_mode
+    _item_description.description
+;     The mode of averaging in the experiment. 
+;
+    _item.name                  '_flr_experiment.averaging_mode'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               code
+    loop_
+    _item_enumeration.value
+    'single-molecule'
+    'ensemble'
+    'sub-ensemble'
+     save_
+
+save__flr_experiment.inst_id
+    _item_description.description
+;     The instrument used in the experiment.
+;
+    _item.name                  '_flr_experiment.inst_id'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_experiment.inst_id'
+    _item_linked.parent_name    '_flr_instrument.id'
+     save_
+
+save__flr_experiment.sample_id
+    _item_description.description
+;     The sample used in the experiment.
+;
+    _item.name                  '_flr_experiment.sample_id'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_experiment.sample_id'
+    _item_linked.parent_name    '_flr_sample.id'
+     save_
+
+save__flr_experiment.setting_id
+    _item_description.description
+;     The experimental settings used in the experiment.
+;
+    _item.name                  '_flr_experiment.setting_id'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_experiment.setting_id'
+    _item_linked.parent_name    '_flr_exp_setting.id'
+     save_
+
+save__flr_experiment.temp_condition_id
+    _item_description.description
+;     An id for the temperature condition. 
+;
+    _item.name                  '_flr_experiment.temp_condition_id'
+    _item.category_id             flr_experiment
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+#########################################
+## FLR_SAMPLE_CONDITION_LIQUID_SOLVENT ##
+#########################################
+
+save_flr_sample_condition_liquid_solvent
+    _category.description
+;              Data items in the FLR_SAMPLE_CONDITION_LIQUID_SOLVENT category records the
+               details of experimental sample conditions for the liquid phase. 
+;
+    _category.id                  flr_sample_condition_liquid_solvent
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_sample_condition_liquid_solvent.sample_condition_id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+    loop_
+    _flr_sample_condition_liquid_solvent.sample_condition_id
+    _flr_sample_condition_liquid_solvent.sample_condition_type
+    _flr_sample_condition_liquid_solvent.sample_condition_immobilization_sub_type
+    _flr_sample_condition_liquid_solvent.sample_condition_immobilization_details
+    1 'immobilized' 'directly tethered to the surface' 'The molecule is immobilized via biotin-streptavidin linkage'
+    #...abbreviated....
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   _pdbx_category_context.type         CONTRIBUTED
+   _pdbx_category_context.category_id  flr_sample_condition_liquid_solvent
+     save_
+
+save__flr_sample_condition_liquid_solvent.sample_condition_id
+    _item_description.description
+;     An identifier for the sample condition.
+;
+    _item.name                  '_flr_sample_condition_liquid_solvent.sample_condition_id'
+    _item.category_id             flr_sample_condition_liquid_solvent
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_sample_condition_liquid_solvent.sample_condition_id'
+    _item_linked.parent_name    '_flr_sample.sample_condition_id'
+     save_
+
+save__flr_sample_condition_liquid_solvent.sample_condition_type
+    _item_description.description
+;     The sample condition type.
+;
+    _item.name                  '_flr_sample_condition_liquid_solvent.sample_condition_type'
+    _item.category_id             flr_sample_condition_liquid_solvent
+    _item.mandatory_code          yes
+    _item_type.code               code
+    loop_
+    _item_enumeration.value
+     'free'
+     'immobilized'
+     'trapped'
+     'other'
+     save_
+
+save__flr_sample_condition_liquid_solvent.sample_condition_immobilized_sub_type
+    _item_description.description
+;     The immobilized sample condition sub-type.
+;
+    _item.name                  '_flr_sample_condition_liquid_solvent.sample_condition_immobilized_sub_type'
+    _item.category_id             flr_sample_condition_liquid_solvent
+    _item.mandatory_code          no
+    _item_type.code               line
+    loop_
+    _item_enumeration.value
+     'directly tethered to the surface'
+     'encapsulated in an immobilized liposome'
+     save_
+
+save__flr_sample_condition_liquid_solvent.sample_condition_immobilization_details
+    _item_description.description
+;     Details of immobilization.
+;
+    _item.name                  '_flr_sample_condition_liquid_solvent.sample_condition_immobilization_details'
+    _item.category_id             flr_sample_condition_liquid_solvent
+    _item.mandatory_code          no
+    _item_type.code               text
+    loop_
+    _item_examples.case
+     'The molecule is immobilized via biotin-streptavidin linkage'
+     save_
+
+############################################
+## FLR_SAMPLE_CONDITION_VITRIFIED_SOLVENT ##
+############################################
+
+save_flr_sample_condition_vitrified_solvent
+    _category.description
+;              Data items in the FLR_SAMPLE_CONDITION_VITRIFIED_SOLVENT category records the
+               details of experimental sample conditions for the vitrified phase.
+;
+    _category.id                  flr_sample_condition_vitrified_solvent
+    _category.mandatory_code      no
+     loop_
+    _category_key.name           '_flr_sample_condition_vitrified_solvent.sample_condition_id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+    loop_
+    _flr_sample_condition_vitrified_solvent.sample_condition_id
+    1
+
+    # ... abbreviated ...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    _pdbx_category_context.type         CONTRIBUTED
+    _pdbx_category_context.category_id  flr_sample_condition_vitrified_solvent
+     save_
+
+save__flr_sample_condition_vitrified_solvent.sample_condition_id
+    _item_description.description
+;     An identifier for the sample condition.
+;
+    _item.name                  '_flr_sample_condition_vitrified_solvent.sample_condition_id'
+    _item.category_id             flr_sample_condition_vitrified_solvent
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_sample_condition_vitrified_solvent.sample_condition_id'
+    _item_linked.parent_name    '_flr_sample.sample_condition_id'
+     save_
+
+#################################
+## FLR_EXPERIMENT_TEMP_DETAILS ##
+#################################
+
+save_flr_experiment_temp_details
+    _category.description
+;              Data items in the FLR_EXPERIMENT_TEMP_DETAILS category records the
+               details of the temperature details of the Fluorescence experiment. 
+;
+    _category.id                  flr_experiment_temp_details
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_experiment_temp_details.temp_condition_id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+        loop_
+        _flr_experiment_temp_details.temp_condition_id
+        _flr_experiment_temp_details.temp_mode
+        _flr_experiment_temp_details.constant_temp_value
+        1   constant    298.0
+        # ... abbreviated ...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    _pdbx_category_context.type         CONTRIBUTED
+    _pdbx_category_context.category_id  flr_experiment_temperature_details
+     save_
+
+save__flr_experiment_temp_details.temp_condition_id
+    _item_description.description
+;     The identifier for the temperature condition.
+;
+    _item.name                  '_flr_experiment_temp_details.temp_condition_id'
+    _item.category_id             flr_experiment_temp_details
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_experiment_temp_details.temp_condition_id'
+    _item_linked.parent_name    '_flr_experiment.temp_condition_id'
+    save_
+
+save__flr_experiment_temp_details.temp_mode
+    _item_description.description
+;     The temperature mode.
+;
+    _item.name                  '_flr_experiment_temp_details.temp_mode'
+    _item.category_id             flr_experiment_temp_details
+    _item.mandatory_code          yes
+    _item_type.code               code
+    loop_
+    _item_enumeration.value
+    'constant'
+    'ramp'
+    save_
+
+save__flr_experiment_temp_details.constant_temp_value
+    _item_description.description
+;     The temperature value in kelvin, if constant.
+;
+    _item.name                  '_flr_experiment_temp_details.constant_temp_value'
+    _item.category_id             flr_experiment_temp_details
+    _item.mandatory_code          no
+    _item.units_code              kelvin
+    _item_type.code               float
+    loop_
+    _item_examples.case
+    '298.0'
+    '300.0'
+     save_
+
+save__flr_experiment_temp_details.ramp_temp_lower_limit
+    _item_description.description
+;     The value of temperature lower limit in kelvin, if ramp.
+;
+    _item.name                  '_flr_experiment_temp_details.ramp_temp_lower_limit'
+    _item.category_id             flr_experiment_temp_details
+    _item.mandatory_code          no
+    _item.units_code              kelvin
+    _item_type.code               float
+    loop_
+    _item_examples.case
+    '200.0'
+    '250.0'
+     save_
+
+save__flr_experiment_temp_details.ramp_temp_upper_limit
+    _item_description.description
+;     The value of temperature upper limit in kelvin, if ramp.
+;
+    _item.name                  '_flr_experiment_temp_details.ramp_temp_upper_limit'
+    _item.category_id             flr_experiment_temp_details
+    _item.mandatory_code          no
+    _item.units_code              kelvin
+    _item_type.code               float
+    loop_
+    _item_examples.case
+    '280.0'
+    '300.0'
+     save_
+
+save__flr_experiment_temp_details.ramp_velocity
+    _item_description.description
+;     The velocity of the ramp. 
+;
+    _item.name                  '_flr_experiment_temp_details.ramp_velocity'
+    _item.category_id             flr_experiment_temp_details
+    _item.mandatory_code          no
+    _item.units_code              degrees/minute
+    _item_type.code               float
+    loop_
+    _item_examples.case
+    '1.0'
+     save_
+
+############
+# FLR_SAMPLE
+############
+
+save_flr_sample
+    _category.description
+;              Data items in the FLR_SAMPLE category records the
+               details of the sample in the Fluorescence experiment.
+;
+    _category.id                  flr_sample
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_sample.id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+    loop_
+
+    #...abbreviated...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   _pdbx_category_context.type         CONTRIBUTED
+   _pdbx_category_context.category_id  flr_sample
+     save_
+
+save__flr_sample.id
+    _item_description.description
+;     An identifier for the experimental sample.
+;
+    _item.name                  '_flr_sample.id'
+    _item.category_id             flr_sample
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_sample.sample_description
+    _item_description.description
+;     An author provided description for the sample. 
+;
+    _item.name                  '_flr_sample.sample_description'
+    _item.category_id             flr_sample
+    _item.mandatory_code          no
+    _item_type.code               line
+     save_
+
+save__flr_sample.sample_details
+    _item_description.description
+;     Additional details about the sample.
+;
+    _item.name                  '_flr_sample.sample_details'
+    _item.category_id             flr_sample
+    _item.mandatory_code          no
+    _item_type.code               text
+     save_
+
+save__flr_sample.num_of_probes
+    _item_description.description
+;     Number of probes in the sample.
+;
+    _item.name                  '_flr_sample.num_of_probes'
+    _item.category_id             flr_sample
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_sample.solvent_phase
+    _item_description.description
+;     The phase of the solvent.
+;
+    _item.name                  '_flr_sample.solvent_phase'
+    _item.category_id             flr_sample
+    _item.mandatory_code          yes
+    _item_type.code               code
+    loop_
+    _item_enumeration.value
+    _item_enumeration.detail
+    'liquid'        'Freely diffusing molecules in solution'
+    'vitrified'     'Molecules in vitrified solution'
+    'other'         'Other'
+     save_
+
+save__flr_sample.sample_condition_id
+    _item_description.description
+;     The id corresponding to the sample condition.
+;
+    _item.name                  '_flr_sample.sample_condition_id'
+    _item.category_id             flr_sample
+    _item.mandatory_code          yes
+    _item_type.code               int
+    save_
+
+save__flr_sample.entity_assembly_id
+    _item_description.description
+;     This data item is a pointer to _flr_entity_assembly.assembly_id
+      in the FLR_ENTITY_ASSEMBLY category. 
+;
+    _item.name                  '_flr_sample.entity_assembly_id'
+    _item.category_id             flr_sample
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_sample.entity_assembly_id'
+    _item_linked.parent_name    '_flr_entity_assembly.assembly_id'
+    save_
+
+#########################
+## FLR_ENTITY_ASSEMBLY ##
+#########################
+
+save_flr_entity_assembly
+    _category.description
+;              Data items in the FLR_ENTITY_ASSEMBLY category records the
+               details of the components in the entity assembly. 
+;
+    _category.id                  flr_entity_assembly
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_entity_assembly.ordinal_id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+
+        # ... abbreviated ...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   _pdbx_category_context.type         CONTRIBUTED
+   _pdbx_category_context.category_id  flr_entity_assembly
+     save_
+
+save__flr_entity_assembly.ordinal_id
+    _item_description.description
+;     A unique identifier for the category.
+;
+    _item.name                  '_flr_entity_assembly.ordinal_id'
+    _item.category_id             flr_entity_assembly
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_entity_assembly.assembly_id
+    _item_description.description
+;     An identifier for the entity assembly.
+;
+    _item.name                  '_flr_entity_assembly.assembly_id'
+    _item.category_id             flr_entity_assembly
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_entity_assembly.entity_id
+    _item_description.description
+;     An identifier for the entity.
+;
+    _item.name                  '_flr_entity_assembly.entity_id'
+    _item.category_id             flr_entity_assembly
+    _item.mandatory_code          yes
+    _item_type.code               code
+    _item_linked.child_name     '_flr_entity_assembly.entity_id'
+    _item_linked.parent_name    '_entity.id'
+     save_
+
+save__flr_entity_assembly.num_copies
+    _item_description.description
+;     The number of copies/instances of the entity in the assembly. 
+;
+    _item.name                  '_flr_entity_assembly.num_copies'
+    _item.category_id             flr_entity_assembly
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_entity_assembly.entity_description
+    _item_description.description
+;     The description of the entity.
+;
+    _item.name                  '_flr_entity_assembly.entity_description'
+    _item.category_id             flr_entity_assembly
+    _item.mandatory_code          no
+    _item_type.code               line
+    _item_linked.child_name     '_flr_entity_assembly.entity_description'
+    _item_linked.parent_name    '_entity.pdbx_description'
+     save_

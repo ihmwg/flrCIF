@@ -1,0 +1,200 @@
+#####################################
+## FLR_DERIVED_DISTANCE_RESTRAINTS ##
+#####################################
+
+###TO DO: Define double well potential in case of no assignment
+
+save_flr_derived_distance_restraints
+    _category.description
+;              Data items in the FLR_DERIVED_DISTANCE_RESTRAINTS category records the
+               details of the distance restraints derived from the fluorescence experiments.
+;
+    _category.id                  flr_derived_distance_restraints
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_derived_distance_restraints.id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+
+        # ... abbreviated ...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   _pdbx_category_context.type         CONTRIBUTED
+   _pdbx_category_context.category_id  flr_derived_distance_restraints
+     save_
+
+save__flr_derived_distance_restraints.id
+    _item_description.description
+;     A unique identifier for the category.
+;
+    _item.name                  '_flr_derived_distance_restraints.id'
+    _item.category_id             flr_derived_distance_restraints
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_derived_distance_restraints.probe_id_1
+    _item_description.description
+;     An identifier for the first probe involved in the distance restraint.
+;
+    _item.name                  '_flr_derived_distance_restraints.probe_id_1'
+    _item.category_id             flr_derived_distance_restraints
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_derived_distance_restraints.probe_id_1'
+    _item_linked.parent_name    '_flr_probe_list.probe_id'
+    save_
+
+save__flr_derived_distance_restraints.probe_id_2
+    _item_description.description
+;     An identifier for the second probe involved in the distance restraint.
+;
+    _item.name                  '_flr_derived_distance_restraints.probe_id_2'
+    _item.category_id             flr_derived_distance_restraints
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_derived_distance_restraints.probe_id_2'
+    _item_linked.parent_name    '_flr_probe_list.probe_id'
+    save_
+
+save__flr_derived_distance_restraints.distance
+    _item_description.description
+;     Derived distance in Angstroms.
+;
+    _item.name                  '_flr_derived_distance_restraints.distance'
+    _item.category_id             flr_derived_distance_restraints
+    _item.mandatory_code          yes
+    _item_type.code               float
+    _item_units.code              angstroms
+     save_
+
+save__flr_derived_distance_restraints.distance_error_plus
+    _item_description.description
+;     Positive distance error in Angstroms.
+;
+    _item.name                  '_flr_derived_distance_restraints.distance_error_plus'
+    _item.category_id             flr_derived_distance_restraints
+    _item.mandatory_code          no
+    _item_type.code               float
+    _item_units.code              angstroms
+     save_
+
+save__flr_derived_distance_restraints.distance_error_minus
+    _item_description.description
+;     Negative distance error in Angstroms.
+;
+         _item.name                  '_flr_derived_distance_restraints.distance_error_minus'
+         _item.category_id             flr_derived_distance_restraints
+         _item.mandatory_code          no
+         _item_type.code               float
+         _item_units.code              angstroms
+          save_
+
+save__flr_derived_distance_restraints.distance_type
+    _item_description.description
+;     The type of distance. 
+      If probe models are known, all distance types are inter-related and can be 
+      inter-converted using a conversion function. 
+;
+         _item.name                  '_flr_derived_distance_restraints.distance_type'
+         _item.category_id             flr_derived_distance_restraints
+         _item.mandatory_code          yes
+         _item_type.code               line
+         loop_
+         _item_enumeration.value
+         _item_enumeration.detail
+         'mean donor acceptor distance (<R_DA>)'                        'obtained by fluorescence lifetime measurements'
+         'FRET averaged donor acceptor distance (<R_E>; <R_DA>_E)'      'obtained by intentsity based measurements'
+         'distance between mean positions of the probe (R_mp)'          'obtained from the probe models; required for geometric modeling'
+          save_
+
+#########################
+## FLR_STRUCT_MODELING ##
+#########################
+
+save_flr_struct_modeling
+    _category.description
+;              Data items in the FLR_STRUCT_MODELING category records the
+               details of the structural modeling carried out. 
+;
+    _category.id                  flr_struct_modeling
+    _category.mandatory_code      no
+     loop_
+    _category_key.name          '_flr_struct_modeling.id'
+
+    loop_
+    _category_group.id           'inclusive_group'
+                                 'flr_group'
+    loop_
+    _category_examples.detail
+    _category_examples.case
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+;
+    Example 1 -
+;
+;
+
+        # ... abbreviated ...
+;
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   _pdbx_category_context.type         CONTRIBUTED
+   _pdbx_category_context.category_id  flr_struct_modeling
+     save_
+
+save__flr_struct_modeling.id
+    _item_description.description
+;     A unique identifier for the category.
+;
+    _item.name                  '_flr_struct_modeling.id'
+    _item.category_id             flr_struct_modeling
+    _item.mandatory_code          yes
+    _item_type.code               int
+     save_
+
+save__flr_struct_modeling.exp_id
+    _item_description.description
+;     An identifier for the experiment.
+;
+    _item.name                  '_flr_struct_modeling.exp_id'
+    _item.category_id             flr_struct_modeling
+    _item.mandatory_code          yes
+    _item_type.code               int
+    _item_linked.child_name     '_flr_struct_modeling.exp_id'
+    _item_linked.parent_name    '_flr_experiment.id'
+    save_
+
+save__flr_struct_modeling.modeling_method
+    _item_description.description
+;     The modeling method.
+;
+    _item.name                  '_flr_struct_modeling.modeling_method'
+    _item.category_id             flr_struct_modeling
+    _item.mandatory_code          yes
+    _item_type.code               line
+    loop_
+    _item_enumeration.value
+    'accessible volume'
+    'molecular dynamics'
+    'other'
+    save_
+
+  save__flr_struct_modeling.other_details
+      _item_description.description
+;     Description of the "other" modeling method.
+;
+      _item.name                  '_flr_struct_modeling.other_details'
+      _item.category_id             flr_struct_modeling
+      _item.mandatory_code          no
+      _item_type.code               text
+      save_
+
