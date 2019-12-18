@@ -1,7 +1,7 @@
 # -------------------------------------------------------------------------------------------------------------------------
 #
 #  File: flr-extension.dic
-#  Date:15-OCT-2019
+#  Date:18-DEC-2019
 #
 #  Dictionary extension for Fluorescence/FRET-based structural models.
 #
@@ -20,7 +20,7 @@ data_flr-extension.dic
 
     _dictionary.title           flr-extension.dic
     _dictionary.datablock_id    flr-extension.dic
-    _dictionary.version         0.005
+    _dictionary.version         0.006
 #
      loop_
     _dictionary_history.version
@@ -57,6 +57,11 @@ data_flr-extension.dic
 ;
   Changes (bv)
   + Added categories to describe lifetime-based analysis
+;
+  0.006   2019-12-18
+;
+  Changes (bv)
+  + Updated the parent of _flr_fret_model_quality.dataset_group_id to match with changes in the IHM dictionary. 
 ;
 
 ####################
@@ -2635,7 +2640,7 @@ save__flr_fret_model_quality.dataset_group_id
     _item.mandatory_code          yes
     _item_type.code               int
     _item_linked.child_name     '_flr_fret_model_quality.dataset_group_id'
-    _item_linked.parent_name    '_ihm_dataset_group.group_id'
+    _item_linked.parent_name    '_ihm_dataset_group.id'
      save_
 
 save__flr_fret_model_quality.method
