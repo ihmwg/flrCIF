@@ -1,7 +1,7 @@
 # -------------------------------------------------------------------------------------------------------------------------
 #
 #  File: flr-extension.dic
-#  Date:18-DEC-2019
+#  Date:10-AUG-2020
 #
 #  Dictionary extension for Fluorescence/FRET-based structural models.
 #
@@ -20,7 +20,7 @@ data_flr-extension.dic
 
     _dictionary.title           flr-extension.dic
     _dictionary.datablock_id    flr-extension.dic
-    _dictionary.version         0.006
+    _dictionary.version         0.007
 #
      loop_
     _dictionary_history.version
@@ -62,6 +62,11 @@ data_flr-extension.dic
 ;
   Changes (bv)
   + Updated the parent of _flr_fret_model_quality.dataset_group_id to match with changes in the IHM dictionary. 
+;
+  0.007   2020-08-10
+;
+  Changes (bv)
+  + Added _flr_poly_probe_position.asym_id
 ;
 
 ####################
@@ -946,6 +951,20 @@ save__flr_poly_probe_position.entity_description
     _item_type.code               line
     _item_linked.child_name       '_flr_poly_probe_position.entity_description'
     _item_linked.parent_name      '_entity.pdbx_description'
+     save_
+
+save__flr_poly_probe_position.asym_id
+    _item_description.description
+;    An asym/strand identifier for the entity molecule with the probe.
+     This data item is a pointer to _struct_asym.id in the
+     STRUCT_ASYM category.
+;
+    _item.name                  '_flr_poly_probe_position.asym_id'
+    _item.category_id             flr_poly_probe_position
+    _item.mandatory_code          no
+    _item_type.code               code
+    _item_linked.child_name       '_flr_poly_probe_position.asym_id'
+    _item_linked.parent_name      '_struct_asym.id'
      save_
 
 save__flr_poly_probe_position.seq_id
