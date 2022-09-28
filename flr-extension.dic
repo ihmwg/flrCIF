@@ -1,7 +1,7 @@
 # -------------------------------------------------------------------------------------------------------------------------
 #
 #  File: flr-extension.dic
-#  Date:27-SEP-2022
+#  Date:28-SEP-2022
 #
 #  Dictionary extension for Fluorescence/FRET-based structural models.
 #
@@ -68,7 +68,7 @@ data_flr-extension.dic
   Changes (bv)
   + Added _flr_poly_probe_position.asym_id
 ;
-  0.008   2022-09-27
+  0.008   2022-09-28
 ;
   Changes (bv)
   + Added flr_kinetic_scheme, flr_kinetic_scheme_state, flr_kinetic_scheme_connectivity
@@ -3831,7 +3831,7 @@ save__flr_kinetic_rate.transition_rate_constant
 ;
     _item.name                  '_flr_kinetic_rate.transition_rate_constant'
     _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          yes
+    _item.mandatory_code          no
     _item_type.code               float
     _item_units.code              reciprocal_seconds
      save_
@@ -3842,7 +3842,7 @@ save__flr_kinetic_rate.equilibrium_constant
 ;
     _item.name                  '_flr_kinetic_rate.equilibrium_constant'
     _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          yes
+    _item.mandatory_code          no
     _item_type.code               float
      save_
 
@@ -3852,7 +3852,7 @@ save__flr_kinetic_rate.equilibrium_constant_determination_method
 ;
     _item.name                  '_flr_kinetic_rate.equilibrium_constant_determination_method'
     _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          yes
+    _item.mandatory_code          no
     _item_type.code               line
     loop_
     _item_enumeration.value
