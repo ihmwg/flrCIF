@@ -1,26 +1,26 @@
 # -------------------------------------------------------------------------------------------------------------------------
 #
-#  File: flr-extension.dic
-#  Date:28-SEP-2022
+#  File: flrCIF.dic
+#  Date: 20-DEC-2022
 #
 #  Dictionary extension for Fluorescence/FRET-based structural models.
 #
 # -------------------------------------------------------------------------------------------------------------------------
 
-data_flr-extension.dic
+data_flrCIF.dic
 
-    _datablock.id                          flr-extension.dic
+    _datablock.id                          flrCIF.dic
     _datablock.description
 ;
      This data block holds the extension dictionary for Fluorescence / FRET-based structural models.
      This extension is based on the PDBx/mmCIF dictionary and the IHM-dictionary.
      This resource is actively developed and maintained in a github repository available at
-     https://github.com/ihmwg/FLR-dictionary.
+     https://github.cflrCIFF.
 ;
 
-    _dictionary.title           flr-extension.dic
-    _dictionary.datablock_id    flr-extension.dic
-    _dictionary.version         0.008
+    _dictionary.title           flrCIF.dic
+    _dictionary.datablock_id    flrCIF.dic
+    _dictionary.version         0.009
 #
      loop_
     _dictionary_history.version
@@ -72,8 +72,17 @@ data_flr-extension.dic
 ;
   Changes (bv)
   + Added flr_kinetic_scheme, flr_kinetic_scheme_state, flr_kinetic_scheme_connectivity
-  + Added flr_kinetic_rate, flr_kinetic_rate_scheme
+  + Added flr_kinetic_rate, flr_kinetic_rate_scheme_connectivity
   + Added flr_relaxation_time, flr_relaxation_time_kinetic_scheme
+;
+  0.009   2022-12-20
+;
+  Changes (bv)
+  + Renamed dictionary to flrCIF and updated README.md
+  + Added flr_kinetic_rate_analysis and flr_relaxation_time_analysis
+  + Updated and moved flr_kinetic_scheme, flr_kinetic_scheme_connectivity, flr_kinetic_rate, flr_relaxation_time, 
+    and flr_relaxation_time_kinetic_scheme to IHM-dictionary
+  + Removed flr_kinetic_scheme_state
 ;
 
 ####################
@@ -3563,19 +3572,19 @@ save__flr_FPS_MPP_modeling.mpp_atom_position_group_id
     _item_linked.parent_name    '_flr_FPS_MPP_atom_position.id'
      save_
 
-########################
-## FLR_KINETIC_SCHEME ##
-########################
+###############################
+## FLR_KINETIC_RATE_ANALYSIS ##
+###############################
 
-save_flr_kinetic_scheme
+save_flr_kinetic_rate_analysis
     _category.description
-;              Data items in the FLR_KINETIC_SCHEME category records the
-               details of kinetic schemes.
+;              Data items in the FLR_KINETIC_RATE_ANALYSIS maps the kinetic rates to
+               the details of FRET analysis.
 ;
-    _category.id                  flr_kinetic_scheme
+    _category.id                  flr_kinetic_rate_analysis
     _category.mandatory_code      no
      loop_
-    _category_key.name          '_flr_kinetic_scheme.id'
+    _category_key.name          '_flr_kinetic_rate_analysis.id'
 
     loop_
     _category_group.id           'inclusive_group'
@@ -3593,418 +3602,70 @@ save_flr_kinetic_scheme
 ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_kinetic_scheme
+   _pdbx_category_context.category_id  flr_kinetic_rate_analysis
      save_
 
-save__flr_kinetic_scheme.id
+save__flr_kinetic_rate_analysis.id
     _item_description.description
 ;     A unique identifier for the category.
 ;
-    _item.name                  '_flr_kinetic_scheme.id'
-    _item.category_id             flr_kinetic_scheme
+    _item.name                  '_flr_kinetic_rate_analysis.id'
+    _item.category_id             flr_kinetic_rate_analysis
     _item.mandatory_code          yes
     _item_type.code               int
      save_
 
-save__flr_kinetic_scheme.name
+save__flr_kinetic_rate_analysis.fret_analysis_id
     _item_description.description
-;     Name for the kinetic scheme.
-;
-    _item.name                  '_flr_kinetic_scheme.name'
-    _item.category_id             flr_kinetic_scheme
-    _item.mandatory_code          no   
-    _item_type.code               line
-     save_
-
-save__flr_kinetic_scheme.details
-    _item_description.description
-;     Details about the kinetic scheme.
-;
-    _item.name                  '_flr_kinetic_scheme.details'
-    _item.category_id             flr_kinetic_scheme
-    _item.mandatory_code          no
-    _item_type.code               text
-     save_
-
-##############################
-## FLR_KINETIC_SCHEME_STATE ##
-##############################
-
-save_flr_kinetic_scheme_state
-    _category.description
-;              Data items in the FLR_KINETIC_SCHEME_STATE category records the
-               details of the states corresponding to the kinetic schemes.
-;
-    _category.id                  flr_kinetic_scheme_state
-    _category.mandatory_code      no
-     loop_
-    _category_key.name          '_flr_kinetic_scheme_state.ordinal_id'
-
-    loop_
-    _category_group.id           'inclusive_group'
-                                 'flr_group'
-    loop_
-    _category_examples.detail
-    _category_examples.case
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-;
-    Example 1 -
-;
-;
-
-        # ... abbreviated ...
-;
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_kinetic_scheme_state
-     save_
-
-save__flr_kinetic_scheme_state.ordinal_id
-    _item_description.description
-;     A unique identifier for the category.
-;
-    _item.name                  '_flr_kinetic_scheme_state.ordinal_id'
-    _item.category_id             flr_kinetic_scheme_state
-    _item.mandatory_code          yes
-    _item_type.code               int
-     save_
-
-save__flr_kinetic_scheme_state.kinetic_scheme_id
-    _item_description.description
-;     An identifier for the kinetic scheme.
-      This data item is a pointer to _flr_kinetic_scheme.id in the
-      FLR_KINETIC_SCHEME data category. 
-;
-    _item.name                  '_flr_kinetic_scheme_state.kinetic_scheme_id'
-    _item.category_id             flr_kinetic_scheme_state
-    _item.mandatory_code          yes
-    _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_scheme_state.kinetic_scheme_id'
-    _item_linked.parent_name    '_flr_kinetic_scheme.id'
-     save_
-
-save__flr_kinetic_scheme_state.state_id
-    _item_description.description
-;     An identifier for the state in a multi-state ensemble.
-      This data item is a pointer to _ihm_multi_state_modeling.state_id
-      in the IHM_MULTI_STATE_MODELING data category. 
-;
-    _item.name                  '_flr_kinetic_scheme_state.state_id'
-    _item.category_id             flr_kinetic_scheme_state
-    _item.mandatory_code          yes
-    _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_scheme_state.state_id'
-    _item_linked.parent_name    '_ihm_multi_state_modeling.state_id'
-     save_
-
-#####################################
-## FLR_KINETIC_SCHEME_CONNECTIVITY ##
-#####################################
-
-save_flr_kinetic_scheme_connectivity
-    _category.description
-;              Data items in the FLR_KINETIC_SCHEME_CONNECTIVITY category records the
-               details of the ordered connectivities among states in a kinetic scheme. 
-;
-    _category.id                  flr_kinetic_scheme_connectivity
-    _category.mandatory_code      no
-     loop_
-    _category_key.name          '_flr_kinetic_scheme_connectivity.ordinal_id'
-
-    loop_
-    _category_group.id           'inclusive_group'
-                                 'flr_group'
-    loop_
-    _category_examples.detail
-    _category_examples.case
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-;
-    Example 1 -
-;
-;
-
-        # ... abbreviated ...
-;
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_kinetic_scheme_connectivity
-     save_
-
-save__flr_kinetic_scheme_connectivity.ordinal_id
-    _item_description.description
-;     A unique identifier for the category.
-;
-    _item.name                  '_flr_kinetic_scheme_connectivity.ordinal_id'
-    _item.category_id             flr_kinetic_scheme_connectivity
-    _item.mandatory_code          yes
-    _item_type.code               int
-     save_
-
-save__flr_kinetic_scheme_connectivity.kinetic_scheme_id
-    _item_description.description
-;     An identifier for the kinetic scheme.
-      This data item is a pointer to _flr_kinetic_scheme.id in the
-      FLR_KINETIC_SCHEME data category. 
-;
-    _item.name                  '_flr_kinetic_scheme_connectivity.kinetic_scheme_id'
-    _item.category_id             flr_kinetic_scheme_connectivity
-    _item.mandatory_code          yes  
-    _item_type.code               int  
-    _item_linked.child_name     '_flr_kinetic_scheme_connectivity.kinetic_scheme_id'
-    _item_linked.parent_name    '_flr_kinetic_scheme.id'
-     save_
-
-save__flr_kinetic_scheme_connectivity.start_state_id
-    _item_description.description
-;     An identifier for the starting state in the kinetic scheme.
-      This data item is a pointer to _ihm_multi_state_modeling.state_id
-      in the IHM_MULTI_STATE_MODELING data category. 
-;
-    _item.name                  '_flr_kinetic_scheme_connectivity.start_state_id'
-    _item.category_id             flr_kinetic_scheme_connectivity
-    _item.mandatory_code          yes  
-    _item_type.code               int  
-    _item_linked.child_name     '_flr_kinetic_scheme_connectivity.start_state_id'
-    _item_linked.parent_name    '_ihm_multi_state_modeling.state_id'
-     save_
-
-save__flr_kinetic_scheme_connectivity.end_state_id
-    _item_description.description
-;     An identifier for the ending state in the kinetic scheme.
-      This data item is a pointer to _ihm_multi_state_modeling.state_id
-      in the IHM_MULTI_STATE_MODELING data category.
-;
-    _item.name                  '_flr_kinetic_scheme_connectivity.end_state_id'
-    _item.category_id             flr_kinetic_scheme_connectivity
-    _item.mandatory_code          yes  
-    _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_scheme_connectivity.end_state_id'
-    _item_linked.parent_name    '_ihm_multi_state_modeling.state_id'
-     save_
-
-#####################
-# FLR_KINETIC_RATE ##
-#####################
-
-save_flr_kinetic_rate
-    _category.description
-;              Data items in the FLR_KINETIC_RATE category records the
-               details of kinetic rates.
-;
-    _category.id                  flr_kinetic_rate
-    _category.mandatory_code      no
-     loop_
-    _category_key.name          '_flr_kinetic_rate.id'
-
-    loop_
-    _category_group.id           'inclusive_group'
-                                 'flr_group'
-    loop_
-    _category_examples.detail
-    _category_examples.case
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-;
-    Example 1 -
-;
-;
-
-    #...abbreviated...
-;
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_kinetic_rate
-     save_
-
-save__flr_kinetic_rate.id
-    _item_description.description
-;     An identifier for the kinetic rate.
-;
-    _item.name                  '_flr_kinetic_rate.id'
-    _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          yes
-    _item_type.code               int
-     save_
-
-save__flr_kinetic_rate.transition_rate_constant
-    _item_description.description
-;     The transition rate constant per second.
-;
-    _item.name                  '_flr_kinetic_rate.transition_rate_constant'
-    _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          no
-    _item_type.code               float
-    _item_units.code              reciprocal_seconds
-     save_
-
-save__flr_kinetic_rate.equilibrium_constant
-    _item_description.description
-;     The equilibrium constant.
-;
-    _item.name                  '_flr_kinetic_rate.equilibrium_constant'
-    _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          no
-    _item_type.code               float
-     save_
-
-save__flr_kinetic_rate.equilibrium_constant_determination_method
-    _item_description.description
-;     Method used to determine the equilibrium constant.
-;
-    _item.name                  '_flr_kinetic_rate.equilibrium_constant_determination_method'
-    _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          no
-    _item_type.code               line
-    loop_
-    _item_enumeration.value
-    _item_enumeration.detail
-    'from population'       'equilibrium constant is determined from population'
-    'from kinetic rates'    'equilibrium constant is determined from kinetic rates, kAB/kBA'
-    'other'                 'quilibrium constant is determined from another method not listed'
-     save_
-
-save__flr_kinetic_rate.equilibrium_constant_unit
-    _item_description.description
-;     Unit of the equilibrium constant, if applicable.
-      If the kinetics describes a conformational change, then the equilibrium constant will not have a unit. 
-      If however a complex is involved, then a unit may be necessary.
-;
-    _item.name                  '_flr_kinetic_rate.equilibrium_constant_unit'
-    _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          no
-    _item_type.code               line
-     save_
-
-save__flr_kinetic_rate.details
-    _item_description.description
-;     Additional details about the kinetic rate.
-;
-    _item.name                  '_flr_kinetic_rate.details'
-    _item.category_id             flr_kinetic_rate
-    _item.mandatory_code          no
-    _item_type.code               text
-    save_
-
-#############################
-## FLR_KINETIC_RATE_SCHEME ##
-#############################
-
-save_flr_kinetic_rate_scheme
-    _category.description
-;              Data items in the FLR_KINETIC_RATE_SCHEME category records the
-               details of the kinetic rate measurement. 
-;
-    _category.id                  flr_kinetic_rate_scheme
-    _category.mandatory_code      no
-     loop_
-    _category_key.name          '_flr_kinetic_rate_scheme.ordinal_id'
-
-    loop_
-    _category_group.id           'inclusive_group'
-                                 'flr_group'
-    loop_
-    _category_examples.detail
-    _category_examples.case
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-;
-    Example 1 -
-;
-;
-        # ... abbreviated ...
-;
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_kinetic_rate_scheme
-     save_
-
-save__flr_kinetic_rate_scheme.ordinal_id
-    _item_description.description
-;     A unique identifier for the category.
-;
-    _item.name                  '_flr_kinetic_rate_scheme.ordinal_id'
-    _item.category_id             flr_kinetic_rate_scheme
-    _item.mandatory_code          yes
-    _item_type.code               int
-     save_
-
-save__flr_kinetic_rate_scheme.kinetic_rate_id
-    _item_description.description
-;     Identifier for the kinetic rate.
-      This data item is a pointer to _flr_kinetic_rate.id in the
-      FLR_KINETIC_RATE data category.
-;
-    _item.name                  '_flr_kinetic_rate_scheme.kinetic_rate_id'
-    _item.category_id             flr_kinetic_rate_scheme
-    _item.mandatory_code          yes
-    _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_rate_scheme.kinetic_rate_id'
-    _item_linked.parent_name    '_flr_kinetic_rate.id'
-     save_
-
-save__flr_kinetic_rate_scheme.kinetic_scheme_id
-    _item_description.description
-;     Identifier for the kinetic scheme. 
-      This data item is a pointer to _flr_kinetic_scheme.id in the
-      FLR_KINETIC_SCHEME data category. 
-;
-    _item.name                  '_flr_kinetic_rate_scheme.kinetic_scheme_id'
-    _item.category_id             flr_kinetic_rate_scheme
-    _item.mandatory_code          yes
-    _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_rate_scheme.kinetic_scheme_id'
-    _item_linked.parent_name    '_flr_kinetic_scheme.id'
-     save_
-
-save__flr_kinetic_rate_scheme.fret_analysis_id
-    _item_description.description
-;     Identifier for the FRET analysis details. 
+;     Identifier for the FRET analysis details.
       This data item is a pointer to _flr_fret_analysis.id in the
-      FLR_FRET_ANALYSIS data category. 
+      FLR_FRET_ANALYSIS data category.
 ;
-    _item.name                  '_flr_kinetic_rate_scheme.fret_analysis_id'
-    _item.category_id             flr_kinetic_rate_scheme
+    _item.name                  '_flr_kinetic_rate_analysis.fret_analysis_id'
+    _item.category_id             flr_kinetic_rate_analysis
     _item.mandatory_code          yes
     _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_rate_scheme.fret_analysis_id'
+    _item_linked.child_name     '_flr_kinetic_rate_analysis.fret_analysis_id'
     _item_linked.parent_name    '_flr_fret_analysis.id'
      save_
 
-save__flr_kinetic_rate_scheme.external_file_id
+save__flr_kinetic_rate_analysis.kinetic_rate_id
     _item_description.description
-;     Identifier for the external file corresponding to the kinetic rate measurement.
-      This data item is a pointer to _ihm_external_files.id in the
-      IHM_EXTERNAL_FILES data category. 
+;     Identifier for the kinetic rate details.
+      This data item is a pointer to _ihm_kinetic_rate.id in the
+      IHM_KINETIC_RATE data category.
 ;
-    _item.name                  '_flr_kinetic_rate_scheme.external_file_id'
-    _item.category_id             flr_kinetic_rate_scheme
-    _item.mandatory_code          no
+    _item.name                  '_flr_kinetic_rate_analysis.kinetic_rate_id'
+    _item.category_id             flr_kinetic_rate_analysis
+    _item.mandatory_code          yes
     _item_type.code               int
-    _item_linked.child_name     '_flr_kinetic_rate_scheme.external_file_id'
-    _item_linked.parent_name    '_ihm_external_files.id'
+    _item_linked.child_name     '_flr_kinetic_rate_analysis.kinetic_rate_id'
+    _item_linked.parent_name    '_ihm_kinetic_rate.id'
      save_
 
-save__flr_kinetic_rate_scheme.details
+save__flr_kinetic_rate_analysis.details
     _item_description.description
-;     Additional details about the kinetic rate measurement. 
+;     Details about the kinetic rate and FRET analysis.
 ;
-    _item.name                  '_flr_kinetic_rate_scheme.details'
-    _item.category_id             flr_kinetic_rate_scheme
+    _item.name                  '_flr_kinetic_rate_analysis.details'
+    _item.category_id             flr_kinetic_rate_analysis
     _item.mandatory_code          no
     _item_type.code               text
      save_
 
-#########################
-## FLR_RELAXATION_TIME ##
-#########################
+##################################
+## FLR_RELAXATION_TIME_ANALYSIS ##
+##################################
 
-save_flr_relaxation_time
+save_flr_relaxation_time_analysis
     _category.description
-;              Data items in the FLR_RELAXATION_TIME category records the details
-               of the relaxation times obtained from the experiment. 
+;              Data items in the FLR_RELAXATION_TIME_ANALYSIS maps the relaxation times to
+               the details of FRET analysis.
 ;
-    _category.id                  flr_relaxation_time
+    _category.id                  flr_relaxation_time_analysis
     _category.mandatory_code      no
      loop_
-    _category_key.name          '_flr_relaxation_time.id'
+    _category_key.name          '_flr_relaxation_time_analysis.id'
 
     loop_
     _category_group.id           'inclusive_group'
@@ -4017,172 +3678,58 @@ save_flr_relaxation_time
     Example 1 -
 ;
 ;
+
         # ... abbreviated ...
 ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
    _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_relaxation_time
+   _pdbx_category_context.category_id  flr_relaxation_time_analysis
      save_
 
-save__flr_relaxation_time.id
-    _item_description.description
-;     A unique identifier for the relaxation time.
-;
-    _item.name                  '_flr_relaxation_time.id'
-    _item.category_id             flr_relaxation_time
-    _item.mandatory_code          yes
-    _item_type.code               int
-     save_
-
-save__flr_relaxation_time.relaxation_time
-    _item_description.description
-;     Relaxation time value.
-;
-    _item.name                  '_flr_relaxation_time.relaxation_time'
-    _item.category_id             flr_relaxation_time
-    _item.mandatory_code          yes
-    _item_type.code               float
-     save_
-
-save__flr_relaxation_time.relaxation_time_unit
-    _item_description.description
-;     Relaxation time unit.
-;
-    _item.name                  '_flr_relaxation_time.relaxation_time_unit'
-    _item.category_id             flr_relaxation_time
-    _item.mandatory_code          yes
-    _item_type.code               code
-    loop_
-    _item_enumeration.value
-    'seconds'
-    'milliseconds'
-    'microseconds'
-     save_
-
-save__flr_relaxation_time.relaxation_time_amplitude
-    _item_description.description
-;     Relaxation time amplitude.
-;
-    _item.name                  '_flr_relaxation_time.relaxation_time_amplitude'
-    _item.category_id             flr_relaxation_time
-    _item.mandatory_code          no  
-    _item_type.code               float
-     save_
-
-save__flr_relaxation_time.details
-    _item_description.description
-;     Additional details regarding the relaxation time.
-;
-    _item.name                  '_flr_relaxation_time.details'
-    _item.category_id             flr_relaxation_time
-    _item.mandatory_code          no
-    _item_type.code               text
-     save_
-
-########################################
-## FLR_RELAXATION_TIME_KINETIC_SCHEME ##
-########################################
-
-save_flr_relaxation_time_kinetic_scheme
-    _category.description
-;              Data items in the FLR_RELAXATION_TIME_KINETIC_SCHEME category records the
-               details of the relaxation time measurement. 
-;
-    _category.id                  flr_relaxation_time_kinetic_scheme
-    _category.mandatory_code      no
-     loop_
-    _category_key.name          '_flr_relaxation_time_kinetic_scheme.ordinal_id'
-
-    loop_
-    _category_group.id           'inclusive_group'
-                                 'flr_group'
-    loop_
-    _category_examples.detail
-    _category_examples.case
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-;
-    Example 1 -
-;
-;
-        # ... abbreviated ...
-;
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-   _pdbx_category_context.type         CONTRIBUTED
-   _pdbx_category_context.category_id  flr_relaxation_time_kinetic_scheme
-     save_
-
-save__flr_relaxation_time_kinetic_scheme.ordinal_id
+save__flr_relaxation_time_analysis.id
     _item_description.description
 ;     A unique identifier for the category.
 ;
-    _item.name                  '_flr_relaxation_time_kinetic_scheme.ordinal_id'
-    _item.category_id             flr_relaxation_time_kinetic_scheme
+    _item.name                  '_flr_relaxation_time_analysis.id'
+    _item.category_id             flr_relaxation_time_analysis
     _item.mandatory_code          yes
     _item_type.code               int
      save_
 
-save__flr_relaxation_time_kinetic_scheme.relaxation_time_id
+save__flr_relaxation_time_analysis.fret_analysis_id
     _item_description.description
-;     Identifier for the relaxation_time.
-      This data item is a pointer to _flr_relaxation_time.id in the
-      FLR_RELAXATION_TIME data category.
-;
-    _item.name                  '_flr_relaxation_time_kinetic_scheme.relaxation_time_id'
-    _item.category_id             flr_relaxation_time_kinetic_scheme
-    _item.mandatory_code          yes
-    _item_type.code               int
-    _item_linked.child_name     '_flr_relaxation_time_kinetic_scheme.relaxation_time_id'
-    _item_linked.parent_name    '_flr_relaxation_time.id'
-     save_
-
-save__flr_relaxation_time_kinetic_scheme.kinetic_scheme_id
-    _item_description.description
-;     Identifier for the kinetic scheme. 
-      This data item is a pointer to _flr_kinetic_scheme.id in the
-      FLR_KINETIC_SCHEME data category. 
-;
-    _item.name                  '_flr_relaxation_time_kinetic_scheme.kinetic_scheme_id'
-    _item.category_id             flr_relaxation_time_kinetic_scheme
-    _item.mandatory_code          yes
-    _item_type.code               int
-    _item_linked.child_name     '_flr_relaxation_time_kinetic_scheme.kinetic_scheme_id'
-    _item_linked.parent_name    '_flr_kinetic_scheme.id'
-     save_
-
-save__flr_relaxation_time_kinetic_scheme.fret_analysis_id
-    _item_description.description
-;     Identifier for the FRET analysis details. 
+;     Identifier for the FRET analysis details.
       This data item is a pointer to _flr_fret_analysis.id in the
-      FLR_FRET_ANALYSIS data category. 
+      FLR_FRET_ANALYSIS data category.
 ;
-    _item.name                  '_flr_relaxation_time_kinetic_scheme.fret_analysis_id'
-    _item.category_id             flr_relaxation_time_kinetic_scheme
+    _item.name                  '_flr_relaxation_time_analysis.fret_analysis_id'
+    _item.category_id             flr_relaxation_time_analysis
     _item.mandatory_code          yes
     _item_type.code               int
-    _item_linked.child_name     '_flr_relaxation_time_kinetic_scheme.fret_analysis_id'
+    _item_linked.child_name     '_flr_relaxation_time_analysis.fret_analysis_id'
     _item_linked.parent_name    '_flr_fret_analysis.id'
      save_
 
-save__flr_relaxation_time_kinetic_scheme.external_file_id
+save__flr_relaxation_time_analysis.relaxation_time_id
     _item_description.description
-;     Identifier for the external file corresponding to the relaxation time measurement.
-      This data item is a pointer to _ihm_external_files.id in the
-      IHM_EXTERNAL_FILES data category. 
+;     Identifier for the relaxation time details.
+      This data item is a pointer to _ihm_relaxation_time.id in the
+      IHM_RELAXATION_TIME data category.
 ;
-    _item.name                  '_flr_relaxation_time_kinetic_scheme.external_file_id'
-    _item.category_id             flr_relaxation_time_kinetic_scheme
-    _item.mandatory_code          no
+    _item.name                  '_flr_relaxation_time_analysis.relaxation_time_id'
+    _item.category_id             flr_relaxation_time_analysis
+    _item.mandatory_code          yes
     _item_type.code               int
-    _item_linked.child_name     '_flr_relaxation_time_kinetic_scheme.external_file_id'
-    _item_linked.parent_name    '_ihm_external_files.id'
+    _item_linked.child_name     '_flr_relaxation_time_analysis.relaxation_time_id'
+    _item_linked.parent_name    '_ihm_relaxation_time.id'
      save_
 
-save__flr_relaxation_time_kinetic_scheme.details
+save__flr_relaxation_time_analysis.details
     _item_description.description
-;     Additional details about the relaxation time measurement. 
+;     Details about the relaxation time and FRET analysis.
 ;
-    _item.name                  '_flr_relaxation_time_kinetic_scheme.details'
-    _item.category_id             flr_relaxation_time_kinetic_scheme
+    _item.name                  '_flr_relaxation_time_analysis.details'
+    _item.category_id             flr_relaxation_time_analysis
     _item.mandatory_code          no
     _item_type.code               text
      save_
