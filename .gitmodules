@@ -1,0 +1,6 @@
+[submodule "IHM-dictionary"]
+	path = IHM-dictionary
+	url = https://github.com/ihmwg/IHM-dictionary
+[submodule "mmcif_pdbx"]
+	path = mmcif_pdbx
+	url = https://github.com/wwpdb-dictionaries/mmcif_pdbx

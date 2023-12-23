@@ -1,0 +1,88 @@
+#######################
+## flrCIF DICTIONARY ##
+#######################
+
+# Version 0.01 22nd December 2023
+
+data_mmcif_ihm_flr.dic
+
+    _datablock.id                          mmcif_ihm_flr.dic
+    _datablock.description
+;
+     This data block holds the extension dictionary for Fluorescence / FRET-based structural models.
+     This extension is based on the PDBx/mmCIF dictionary and the IHMCIF dictionary.
+     This resource is actively developed and maintained in a github repository available at
+     https://github.com/ihmwg/flrCIF.
+;
+
+    _dictionary.title           mmcif_ihm_flr.dic
+    _dictionary.datablock_id    mmcif_ihm_flr.dic
+    _dictionary.version         0.01
+#
+     loop_
+    _dictionary_history.version
+    _dictionary_history.update
+    _dictionary_history.revision
+
+  0.000   2018-05-25
+;
+  Changes (bv/cah/tp/md/cams/jdw)
+  + Release as initial version 0.000
+;
+  0.001   2019-03-08
+;
+  Changes (bv)
+  + Updated flags to be case insensitive
+;
+  0.002   2019-04-05
+;
+  Changes (bv)
+  + Changed _flr_FPS_global_parameter.forster_radius_id to _flr_FPS_global_parameter.forster_radius_value
+;
+  0.003   2019-05-22
+;
+  Changes (bv)
+  + Deleted FLR_CHEMICAL_DESCRIPTOR and modified all children to point to IHM_CHEMICAL_COMPONENT_DESCRIPTOR
+;
+  0.004   2019-10-07
+;
+  Changes (bv)
+  + Added FLR_INST_SETTING
+  + Changed FLR_EXP_SETTING to FLR_EXP_CONDITION
+;
+  0.005   2019-10-15
+;
+  Changes (bv)
+  + Added categories to describe lifetime-based analysis
+;
+  0.006   2019-12-18
+;
+  Changes (bv)
+  + Updated the parent of _flr_fret_model_quality.dataset_group_id to match with changes in the IHM dictionary. 
+;
+  0.007   2020-08-10
+;
+  Changes (bv)
+  + Added _flr_poly_probe_position.asym_id
+;
+  0.008   2022-09-28
+;
+  Changes (bv)
+  + Added flr_kinetic_scheme, flr_kinetic_scheme_state, flr_kinetic_scheme_connectivity
+  + Added flr_kinetic_rate, flr_kinetic_rate_scheme_connectivity
+  + Added flr_relaxation_time, flr_relaxation_time_kinetic_scheme
+;
+  0.009   2022-12-20
+;
+  Changes (bv)
+  + Renamed dictionary to flrCIF and updated README.md
+  + Added flr_kinetic_rate_analysis and flr_relaxation_time_analysis
+  + Updated and moved flr_kinetic_scheme, flr_kinetic_scheme_connectivity, flr_kinetic_rate, flr_relaxation_time, 
+    and flr_relaxation_time_kinetic_scheme to IHM-dictionary
+  + Removed flr_kinetic_scheme_state
+;
+  0.01   2023-12-22
+;
+  Changes (bv)
+  + Reorganize dictionary files
+;
