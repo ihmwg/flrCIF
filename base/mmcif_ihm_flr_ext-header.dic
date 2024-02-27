@@ -78,7 +78,7 @@ data_mmcif_ihm_flr_ext.dic
   + Renamed dictionary to flrCIF and updated README.md
   + Added flr_kinetic_rate_analysis and flr_relaxation_time_analysis
   + Updated and moved flr_kinetic_scheme, flr_kinetic_scheme_connectivity, flr_kinetic_rate, flr_relaxation_time, 
-    and flr_relaxation_time_kinetic_scheme to IHM-dictionary
+    and flr_relaxation_time_kinetic_scheme to IHMCIF dictionary
   + Removed flr_kinetic_scheme_state
 ;
   0.01   2023-12-22

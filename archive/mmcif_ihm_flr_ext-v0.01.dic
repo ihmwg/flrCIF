@@ -81,7 +81,7 @@ _dictionary_history.revision
   + Renamed dictionary to flrCIF and updated README.md
   + Added flr_kinetic_rate_analysis and flr_relaxation_time_analysis
   + Updated and moved flr_kinetic_scheme, flr_kinetic_scheme_connectivity, flr_kinetic_rate, flr_relaxation_time, 
-    and flr_relaxation_time_kinetic_scheme to IHM-dictionary
+    and flr_relaxation_time_kinetic_scheme to IHMCIF dictionary
   + Removed flr_kinetic_scheme_state
 ;
   
@@ -798,7 +798,7 @@ mmcif_ihm_flr-core.dic  0.009  2022-12-20
   + Renamed dictionary to flrCIF and updated README.md
   + Added flr_kinetic_rate_analysis and flr_relaxation_time_analysis
   + Updated and moved flr_kinetic_scheme, flr_kinetic_scheme_connectivity, flr_kinetic_rate, flr_relaxation_time, 
-    and flr_relaxation_time_kinetic_scheme to IHM-dictionary
+    and flr_relaxation_time_kinetic_scheme to IHMCIF dictionary
   + Removed flr_kinetic_scheme_state
 ;
   

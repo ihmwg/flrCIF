@@ -14,7 +14,7 @@ mmcif_pdbx_conditionals.dic         ../mmcif_pdbx/base/mmcif_pdbx-conditionals.d
 mmcif_pdbx-base.dic                 ../mmcif_pdbx/base/mmcif_pdbx-base.dic                      extend . .
 mmcif_pdbx_v50-variable.dic         ../mmcif_pdbx/base/mmcif_pdbx_v50-variable.dic              extend . .
 #Extension of entity_poly_seq
-entity_poly_seq_ext.dic             ../IHM-dictionary/base/entity_poly_seq_ext.dic              extend . .
+entity_poly_seq_ext.dic             ../IHMCIF/base/entity_poly_seq_ext.dic                      extend . .
 # Item linked groups
 mmcif_pdbx-def-ilg.dic              ../mmcif_pdbx/base/mmcif_pdbx-def-ilg.dic                   extend . .
 mmcif_pdbx-def-pdb-ilg.dic          ../mmcif_pdbx/base/mmcif_pdbx-def-pdb-ilg.dic               extend . .
@@ -26,6 +26,6 @@ initial-model-extension.dic         ../mmcif_pdbx/extensions/initial-model-exten
 mmcif_pdbx_investigation.dic        ../mmcif_pdbx/extensions/investigation.dic                  extend . .
 entity_branch-extension.dic         ../mmcif_pdbx/extensions/entity_branch-extension.dic        extend . .
 #mmcif_ihm core
-mmcif_ihm-core.dic                  ../IHM-dictionary/base/mmcif_ihm-core.dic                   extend . .
+mmcif_ihm-core.dic                  ../IHMCIF/base/mmcif_ihm-core.dic                           extend . .
 #mmcif_ihm_flr core
 mmcif_ihm_flr-core.dic              mmcif_ihm_flr-core.dic                                      extend . .
