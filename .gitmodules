@@ -1,0 +1,6 @@
+[submodule "mmcif_pdbx"]
+	path = mmcif_pdbx
+	url = https://github.com/wwpdb-dictionaries/mmcif_pdbx
+[submodule "IHMCIF"]
+	path = IHMCIF
+	url = https://github.com/ihmwg/IHMCIF

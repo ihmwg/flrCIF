@@ -1,0 +1,15 @@
+data_mmcif_ihm_flr_ext.dic
+#
+loop_
+_pdbx_include_dictionary.dictionary_id
+_pdbx_include_dictionary.dictionary_locator
+_pdbx_include_dictionary.include_mode
+_pdbx_include_dictionary.dictionary_namespace_prefix
+_pdbx_include_dictionary.dictionary_namespace_prefix_replace
+#
+mmcif_ihm_flr_ext-header.dic        mmcif_ihm_flr_ext-header.dic                                extend . .
+mmcif_ihm_flr-data.dic              mmcif_ihm_flr-data.dic                                      extend . .
+mmcif_pdbx_conditionals.dic         ../mmcif_pdbx/base/mmcif_pdbx-conditionals.dic              extend . .
+entity_poly_seq.dic                 ../IHMCIF/base/entity_poly_seq.dic                          extend . .
+mmcif_ihm-core.dic                  ../IHMCIF/base/mmcif_ihm-core.dic                           extend . .
+mmcif_ihm_flr-core.dic              mmcif_ihm_flr-core.dic                                      extend . .
