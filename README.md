@@ -7,7 +7,7 @@ capturing the details of Fluorescence / FRET experiments.
 The restraints derived from these experiments can be combined with spatial restraints
 from other experiments to determine the structures of macromolecular assemblies using 
 integrative modeling methods. The integrative structures are archived in the
-[PDB-Dev](https://pdb-dev.wwpdb.org) prototype system.
+[PDB-IHM](https://pdb-ihm.org) prototype system.
 
 [flrCIF](base/mmcif_ihm_flr-core.dic) provides the defintions required to handle the restraints obtained from
 FRET experiments and the structural models derived from them. This dictionary is an extension of the 

@@ -2,7 +2,7 @@
 ## flrCIF DICTIONARY ##
 #######################
 
-# Version 0.01 22nd December 2023
+# Version 0.02 27th November 2024
 
 data_mmcif_ihm_flr.dic
 
@@ -17,7 +17,7 @@ data_mmcif_ihm_flr.dic
 
     _dictionary.title           mmcif_ihm_flr.dic
     _dictionary.datablock_id    mmcif_ihm_flr.dic
-    _dictionary.version         0.01
+    _dictionary.version         0.02
 #
      loop_
     _dictionary_history.version
@@ -85,4 +85,9 @@ data_mmcif_ihm_flr.dic
 ;
   Changes (bv)
   + Reorganize dictionary files
+;
+  0.02   2024-11-27
+;
+  Changes (bv)
+  + Update PDBx/mmCIF and IHMCIF parent dictionaries
 ;
